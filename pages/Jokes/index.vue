@@ -1,5 +1,7 @@
 <template>
     <div>
+        <!-- emitting an event on search-text and add a method called searchText -->
+        <SearchJokes v-on:search-text="searchText" />
         <!-- Loop thru for each joke in the array using v-for directive -->
         <!-- jokes array is in data() method -->
         <Joke v-for="joke in jokes" :key="joke.id" :id="joke.id" :joke="joke.joke"/>
@@ -9,10 +11,12 @@
 <script>
 import axios from 'axios';
 import Joke from '../../components/Joke'
+import SearchJokes from '../../components/SearchJokes'
 
 export default {
     components: {
-        Joke
+        Joke,
+        SearchJokes
     },
     // Returning object with data
     data() {
@@ -33,6 +37,22 @@ export default {
             this.jokes = res.data.results; // stored in jokes array in data()
         } catch (err) {
             console.log(err);
+        }
+    },
+    methods: {
+        async searchText(text) {
+            const config = {
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }
+            try {
+                const res = await axios.get(`https://icanhazdadjoke.com/search?term=${text}`, config);
+                console.log(res.data);
+                this.jokes = res.data.results; // stored in jokes array in data()
+            } catch (err) {
+                console.log(err);
+            }
         }
     },
     head() {
