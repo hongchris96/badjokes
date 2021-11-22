@@ -1,8 +1,10 @@
 <template>
-    <div class="joke">
-        <!-- joke pass in as prop -->
-        <p>{{ joke }}</p>
-    </div>
+    <nuxt-link :to="'jokes/' + id">
+        <div class="joke">
+            <!-- joke pass in as prop -->
+            <p>{{ joke }}</p>
+        </div>
+    </nuxt-link>
 </template>
 
 <script>
