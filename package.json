@@ -1,6 +1,8 @@
 {
   "name": "badjokes",
   "version": "1.0.0",
+  "description": "Tutorial of bad jokes",
+  "author": "Joseph Joestar",
   "private": true,
   "scripts": {
     "dev": "nuxt",
@@ -9,8 +11,12 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "@nuxtjs/axios": "^5.13.6",
     "core-js": "^3.15.1",
+    "cross-env": "^7.0.3",
     "nuxt": "^2.15.7"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
 }
