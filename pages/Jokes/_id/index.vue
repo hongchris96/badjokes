@@ -30,6 +30,18 @@ export default {
             console.log(err);
         }
     },
+    head() {
+        return {
+            title: Object.values(this.joke).slice(0,8).join("") + "...",
+            meta: [
+                {
+                    hid: 'description',
+                    name: 'description',
+                    content: 'Pool of bad jokes'
+                }
+            ]
+        }
+    }
 }
 </script>
 
